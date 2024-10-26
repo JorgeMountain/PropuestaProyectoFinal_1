@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Recetas</title>
+    <!-- Puedes agregar tu propio archivo CSS aquí -->
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Encabezado de la página -->
+    <header>
+        <h1>App de Recetas</h1>
+        <p>Encuentra recetas, detalles nutricionales y sugerencias personalizadas</p>
+    </header>
+
+    <!-- Sección de búsqueda de recetas -->
+    <section id="search-section">
+        <h2>Buscar Recetas</h2>
+        <form id="search-form">
+            <input type="text" id="search-input" placeholder="Buscar por nombre o ingrediente..." required>
+            <button type="submit">Buscar</button>
+        </form>
+    </section>
+
+    <!-- Sección para agregar ingredientes disponibles -->
+    <section id="available-ingredients-section">
+        <h2>Ingredientes Disponibles</h2>
+        <p>Agrega los ingredientes que tienes en casa para obtener recetas recomendadas:</p>
+        <form id="add-ingredient-form">
+            <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo, arroz" required>
+            <button type="button" onclick="addIngredient()">Agregar Ingrediente</button>
+        </form>
+        <ul id="ingredients-list">
+            <!-- Aquí se mostrarán los ingredientes que el usuario ha agregado -->
+        </ul>
+        <button id="suggest-recipes-button" onclick="suggestRecipes()">Sugerir Recetas</button>
+    </section>
+
+    <!-- Sección de resultados de búsqueda -->
+    <section id="results-section">
+        <h2>Resultados de la Búsqueda</h2>
+        <div id="results">
+            <!-- Aquí se mostrarán los resultados de las recetas -->
+        </div>
+    </section>
+
+    <!-- Sección de detalles de la receta -->
+    <section id="recipe-details-section">
+        <h2>Detalles de la Receta</h2>
+        <div id="recipe-details">
+            <!-- Aquí se mostrarán los detalles de la receta seleccionada -->
+        </div>
+    </section>
+
+    <!-- Sección de favoritos -->
+    <section id="favorites-section">
+        <h2>Recetas Favoritas</h2>
+        <div id="favorites">
+            <!-- Aquí se mostrarán las recetas guardadas como favoritas -->
+        </div>
+    </section>
+
+    <!-- Archivo JavaScript para interactividad -->
+    <script src="script.js"></script>
+</body>
+</html>
