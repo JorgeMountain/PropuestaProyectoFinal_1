@@ -1,0 +1,120 @@
+/* General */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background-color: #121212; /* Fondo oscuro */
+    color: #E0E0E0; /* Texto claro para contraste */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Encabezado */
+header {
+    text-align: center;
+    margin: 20px 0;
+    color: #D1C4E9; /* Morado claro */
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+header p {
+    font-size: 1.2rem;
+    color: #B39DDB; /* Morado suave */
+}
+
+/* Contenedor Flex para alinear secciones */
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Ajustes para las secciones dentro del contenedor flex */
+#search-section, #available-ingredients-section {
+    flex: 1;
+    min-width: 300px;
+    background-color: #1E1E1E; /* Gris oscuro */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#search-section h2, #available-ingredients-section h2 {
+    color: #CE93D8; /* Morado suave */
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+}
+
+/* Formularios */
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #B39DDB; /* Morado suave */
+    border-radius: 4px;
+    background-color: #2C2C2C;
+    color: #E0E0E0;
+}
+
+input[type="text"]::placeholder {
+    color: #9E9E9E; /* Gris claro */
+}
+
+button {
+    padding: 10px;
+    margin-top: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #7E57C2; /* Botón morado */
+    color: #FFF;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #9575CD; /* Botón morado claro al pasar el mouse */
+}
+
+#suggest-recipes-button {
+    width: 100%;
+    font-weight: 700;
+}
+
+/* Lista de Ingredientes */
+#ingredients-list {
+    list-style: none;
+    margin-top: 15px;
+    padding: 0;
+}
+
+#ingredients-list li {
+    padding: 8px;
+    margin-bottom: 5px;
+    background-color: #2E2E2E;
+    border: 1px solid #7E57C2;
+    border-radius: 4px;
+    color: #E0E0E0;
+}
+
+/* Ajuste para apilar secciones en pantallas pequeñas */
+@media (max-width: 768px) {
+    .flex-container {
+        flex-direction: column;
+    }
+}

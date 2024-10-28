@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App de Recetas</title>
-    <!-- Puedes agregar tu propio archivo CSS aquí -->
+    <!-- Enlace al archivo CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,28 +14,31 @@
         <p>Encuentra recetas, detalles nutricionales y sugerencias personalizadas</p>
     </header>
 
-    <!-- Sección de búsqueda de recetas -->
-    <section id="search-section">
-        <h2>Buscar Recetas</h2>
-        <form id="search-form">
-            <input type="text" id="search-input" placeholder="Buscar por nombre o ingrediente..." required>
-            <button type="submit">Buscar</button>
-        </form>
-    </section>
+    <!-- Contenedor Flex para las secciones de búsqueda y de ingredientes -->
+    <div class="flex-container">
+        <!-- Sección de búsqueda de recetas -->
+        <section id="search-section">
+            <h2>Buscar Recetas</h2>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Buscar por nombre o ingrediente..." required>
+                <button type="submit">Buscar</button>
+            </form>
+        </section>
 
-    <!-- Sección para agregar ingredientes disponibles -->
-    <section id="available-ingredients-section">
-        <h2>Ingredientes Disponibles</h2>
-        <p>Agrega los ingredientes que tienes en casa para obtener recetas recomendadas:</p>
-        <form id="add-ingredient-form">
-            <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo, arroz" required>
-            <button type="button" onclick="addIngredient()">Agregar Ingrediente</button>
-        </form>
-        <ul id="ingredients-list">
-            <!-- Aquí se mostrarán los ingredientes que el usuario ha agregado -->
-        </ul>
-        <button id="suggest-recipes-button" onclick="suggestRecipes()">Sugerir Recetas</button>
-    </section>
+        <!-- Sección para agregar ingredientes disponibles -->
+        <section id="available-ingredients-section">
+            <h2>Ingredientes Disponibles</h2>
+            <p>Agrega los ingredientes que tienes en casa para obtener recetas recomendadas:</p>
+            <form id="add-ingredient-form">
+                <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo, arroz" required>
+                <button type="button" onclick="addIngredient()">Agregar Ingrediente</button>
+            </form>
+            <ul id="ingredients-list">
+                <!-- Aquí se mostrarán los ingredientes que el usuario ha agregado -->
+            </ul>
+            <button id="suggest-recipes-button" onclick="suggestRecipes()">Sugerir Recetas</button>
+        </section>
+    </div>
 
     <!-- Sección de resultados de búsqueda -->
     <section id="results-section">
