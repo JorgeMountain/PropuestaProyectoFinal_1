@@ -65,6 +65,33 @@ app.post('/recetas', (req, res) => {
         }
     });
 });
+// Endpoint para buscar recetas en general por nombre
+app.post('/recetas/buscar', (req, res) => {
+    const { Nombre } = req.body;
+
+    if (!Nombre) {
+        return res.status(400).json({ message: 'Debe proporcionar un nombre para buscar recetas' });
+    }
+
+    const query = `
+        SELECT * FROM Recetas 
+        WHERE Nombre LIKE ?
+    `;
+    const values = [`%${Nombre}%`];
+
+    db.query(query, values, (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).json({ message: 'Error en el servidor' });
+        }
+        if (results.length > 0) {
+            res.status(200).json({ recetas: results });
+        } else {
+            res.status(404).json({ message: 'No se encontraron recetas con ese nombre' });
+        }
+    });
+});
+
 
 // Endpoint para agregar una receta a favoritos
 app.post('/favoritos', (req, res) => {
