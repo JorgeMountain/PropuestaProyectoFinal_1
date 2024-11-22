@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RecetApp - Página Principal</title>
+    <link rel="stylesheet" href="./styles/styles.css">
+</head>
+<body>
+    <header>
+        <h1>RecetApp</h1>
+        <nav>
+            <button onclick="logout()">Cerrar Sesión</button>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Buscar recetas -->
+        <section id="search-recipes">
+            <h2>Buscar Recetas</h2>
+            <form id="search-form">
+                <input type="text" id="search-input" placeholder="Buscar por nombre o tipo" required>
+                <button type="button" onclick="searchRecipes()">Buscar</button>
+            </form>
+            <div id="search-results"></div>
+        </section>
+
+        <!-- Sugerencias basadas en ingredientes -->
+        <section id="suggested-recipes">
+            <h2>Recetas por Ingredientes</h2>
+            <form id="ingredient-form">
+                <input type="text" id="ingredient-input" placeholder="Añadir ingrediente (Ej. tomate)">
+                <button type="button" onclick="addIngredient()">Agregar Ingrediente</button>
+            </form>
+            <ul id="ingredient-list"></ul>
+            <button type="button" onclick="suggestRecipes()">Sugerir Recetas</button>
+        </section>
+
+        <!-- Favoritos -->
+        <section id="favorites">
+            <h2>Recetas Favoritas</h2>
+            <div id="favorite-list"></div>
+        </section>
+    </main>
+
+    <script src="./js/main.js"></script>
+</body>
+</html>
