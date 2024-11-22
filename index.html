@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>App de Recetas</title>
-    <!-- Enlace al archivo CSS -->
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -14,57 +13,58 @@
         <p>Encuentra recetas, detalles nutricionales y sugerencias personalizadas</p>
     </header>
 
+    <!-- Sección de Login -->
+    <section id="login-section">
+        <h2>Iniciar Sesión</h2>
+        <form id="login-form" onsubmit="loginUser(event)">
+            <input type="email" id="login-email" placeholder="Correo electrónico" required>
+            <input type="password" id="login-password" placeholder="Contraseña" required>
+            <button type="submit">Iniciar Sesión</button>
+        </form>
+        <p id="login-message"></p>
+    </section>
+
     <!-- Contenedor Flex para las secciones de búsqueda y de ingredientes -->
     <div class="flex-container">
         <!-- Sección de búsqueda de recetas -->
         <section id="search-section">
             <h2>Buscar Recetas</h2>
-            <form id="search-form">
-                <input type="text" id="search-input" placeholder="Buscar por nombre o ingrediente..." required>
+            <form id="search-form" onsubmit="searchRecipes(event)">
+                <input type="text" id="search-input" placeholder="Buscar por nombre de receta..." required>
                 <button type="submit">Buscar</button>
             </form>
+            <div id="search-results">
+                <!-- Aquí se mostrarán los resultados de búsqueda de recetas -->
+            </div>
         </section>
 
         <!-- Sección para agregar ingredientes disponibles -->
         <section id="available-ingredients-section">
             <h2>Ingredientes Disponibles</h2>
             <p>Agrega los ingredientes que tienes en casa para obtener recetas recomendadas:</p>
-            <form id="add-ingredient-form">
-                <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo, arroz" required>
-                <button type="button" onclick="addIngredient()">Agregar Ingrediente</button>
+            <form id="add-ingredient-form" onsubmit="suggestRecipes(event)">
+                <input type="text" id="ingredient-input" placeholder="Ejemplo: tomate, pollo" required>
+                <button type="submit">Sugerir Recetas</button>
             </form>
             <ul id="ingredients-list">
                 <!-- Aquí se mostrarán los ingredientes que el usuario ha agregado -->
             </ul>
-            <button id="suggest-recipes-button" onclick="suggestRecipes()">Sugerir Recetas</button>
+            <div id="ingredient-results">
+                <!-- Aquí se mostrarán los resultados de sugerencias de recetas -->
+            </div>
         </section>
     </div>
-
-    <!-- Sección de resultados de búsqueda -->
-    <section id="results-section">
-        <h2>Resultados de la Búsqueda</h2>
-        <div id="results">
-            <!-- Aquí se mostrarán los resultados de las recetas -->
-        </div>
-    </section>
-
-    <!-- Sección de detalles de la receta -->
-    <section id="recipe-details-section">
-        <h2>Detalles de la Receta</h2>
-        <div id="recipe-details">
-            <!-- Aquí se mostrarán los detalles de la receta seleccionada -->
-        </div>
-    </section>
 
     <!-- Sección de favoritos -->
     <section id="favorites-section">
         <h2>Recetas Favoritas</h2>
+        <button onclick="getFavorites()">Ver Favoritos</button>
         <div id="favorites">
             <!-- Aquí se mostrarán las recetas guardadas como favoritas -->
         </div>
     </section>
 
     <!-- Archivo JavaScript para interactividad -->
-    <script src="app.js"></script>
+    <script src="frontend.js"></script>
 </body>
 </html>
