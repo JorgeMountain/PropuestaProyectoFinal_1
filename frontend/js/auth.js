@@ -1,39 +1,60 @@
 const API_BASE = 'http://localhost:3000';
 
 async function register() {
-    const username = document.getElementById('register-username').value;
-    const email = document.getElementById('register-email').value;
-    const password = document.getElementById('register-password').value;
+  const username = document.getElementById('register-username').value.trim();
+  const email = document.getElementById('register-email').value.trim();
+  const password = document.getElementById('register-password').value;
 
+  if (!username || !email || !password) {
+    alert('Completa todos los campos para registrarte.');
+    return;
+  }
+
+  try {
     const response = await fetch(`${API_BASE}/users/register`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, email, password })
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ username, email, password })
     });
 
-    if (response.ok) {
-        alert('Registro exitoso, por favor inicia sesión.');
-    } else {
-        alert('Error en el registro.');
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data?.error || 'Error en el registro.');
     }
+
+    alert('Registro exitoso, ahora puedes iniciar sesión.');
+    document.getElementById('register-form').reset();
+  } catch (error) {
+    alert(error.message);
+  }
 }
 
 async function login() {
-    const email = document.getElementById('login-email').value;
-    const password = document.getElementById('login-password').value; 
+  const email = document.getElementById('login-email').value.trim();
+  const password = document.getElementById('login-password').value;
 
+  if (!email || !password) {
+    alert('Ingresa tu correo y contraseña.');
+    return;
+  }
+
+  try {
     const response = await fetch(`${API_BASE}/users/login`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, password })
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
     });
 
-    if (response.ok) {
-        const data = await response.json();
-        localStorage.setItem('token', data.token);
-        alert('Inicio de sesión exitoso.');
-        window.location.href = 'main.html';
-    } else {
-        alert('Credenciales inválidas.');
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data?.error || 'Credenciales inválidas.');
     }
+
+    localStorage.setItem('token', data.token);
+    window.location.href = 'main.html';
+  } catch (error) {
+    alert(error.message);
+  }
 }

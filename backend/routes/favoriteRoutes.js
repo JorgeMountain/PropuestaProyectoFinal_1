@@ -14,7 +14,7 @@ router.post(
   '/',
   [
     authMiddleware,
-    body('recipeId').isInt().withMessage('Valid recipe ID is required')
+    body('recipeId').isInt({ min: 1 }).withMessage('Valid recipe ID is required').toInt()
   ],
   validateInputs,
   FavoriteController.addFavorite
@@ -25,7 +25,7 @@ router.delete(
   '/',
   [
     authMiddleware,
-    body('recipeId').isInt().withMessage('Valid recipe ID is required')
+    body('recipeId').isInt({ min: 1 }).withMessage('Valid recipe ID is required').toInt()
   ],
   validateInputs,
   FavoriteController.removeFavorite

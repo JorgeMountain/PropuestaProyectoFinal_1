@@ -22,7 +22,7 @@
                 <input type="text" id="search-input" placeholder="Buscar por nombre o tipo" required>
                 <button type="button" onclick="searchRecipes()">Buscar</button>
             </form>
-            <div id="search-results"></div>
+            <div id="search-results" class="card-grid"></div>
         </section>
 
         <!-- Sugerencias basadas en ingredientes -->
@@ -34,6 +34,7 @@
             </form>
             <ul id="ingredient-list"></ul>
             <button type="button" onclick="suggestRecipes()">Sugerir Recetas</button>
+            <div id="suggestion-results" class="card-grid"></div>
         </section>
 
         <!-- Favoritos -->

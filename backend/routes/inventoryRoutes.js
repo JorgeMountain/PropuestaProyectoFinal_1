@@ -14,9 +14,9 @@ router.post(
   '/',
   [
     authMiddleware,
-    body('ingredient').notEmpty().withMessage('Ingredient name is required'),
-    body('quantity').isFloat({ min: 0 }).withMessage('Valid quantity is required'),
-    body('type').notEmpty().withMessage('Measurement type is required')
+    body('ingredient').notEmpty().withMessage('Ingredient name is required').trim(),
+    body('quantity').isFloat({ min: 0 }).withMessage('Valid quantity is required').toFloat(),
+    body('type').notEmpty().withMessage('Measurement type is required').trim()
   ],
   validateInputs,
   InventoryController.addIngredient
@@ -27,7 +27,7 @@ router.delete(
   '/',
   [
     authMiddleware,
-    body('ingredient').notEmpty().withMessage('Ingredient name is required')
+    body('ingredient').notEmpty().withMessage('Ingredient name is required').trim()
   ],
   validateInputs,
   InventoryController.removeIngredient

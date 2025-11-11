@@ -1,6 +1,7 @@
 import express from 'express';
 import dotenv from 'dotenv';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import userRoutes from './routes/userRoutes.js';
 import recipeRoutes from './routes/recipeRoutes.js';
 import favoriteRoutes from './routes/favoriteRoutes.js';
@@ -13,6 +14,7 @@ dotenv.config();
 const app = express();
 
 // Middlewares
+app.use(cors()); // Permitir peticiones desde el frontend
 app.use(bodyParser.json()); // Middleware para analizar el cuerpo de las solicitudes en formato JSON
 
 // Rutas

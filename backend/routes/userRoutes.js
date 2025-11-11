@@ -25,7 +25,7 @@ router.post(
     body('email').isEmail().withMessage('Valid email is required'),
     body('password').notEmpty().withMessage('Password is required')
   ],
-  //validateInputs,
+  validateInputs,
   UserController.login
 );
 

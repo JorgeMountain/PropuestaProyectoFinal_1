@@ -7,13 +7,13 @@ class FavoriteService {
   }
 
   static async addFavorite(userId, recipeId) {
-    await FavoriteModel.addFavorite(userId, recipeId);
-    return { message: 'Recipe added to favorites' };
+    const favorite = await FavoriteModel.addFavorite(userId, recipeId);
+    return favorite;
   }
 
   static async removeFavorite(userId, recipeId) {
-    await FavoriteModel.removeFavorite(userId, recipeId);
-    return { message: 'Recipe removed from favorites' };
+    const wasDeleted = await FavoriteModel.removeFavorite(userId, recipeId);
+    return wasDeleted;
   }
 }
 

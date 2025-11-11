@@ -9,8 +9,8 @@ const router = Router();
 router.get(
   '/',
   [
-    query('name').optional().isString().withMessage('Name must be a string'),
-    query('type').optional().isString().withMessage('Type must be a string')
+    query('name').optional().isString().withMessage('Name must be a string').trim(),
+    query('type').optional().isString().withMessage('Type must be a string').trim()
   ],
   validateInputs,
   RecipeController.searchRecipes
@@ -25,7 +25,11 @@ router.post(
   [
     body('ingredients')
       .isArray({ min: 1 })
-      .withMessage('Ingredients must be an array with at least one element')
+      .withMessage('Ingredients must be an array with at least one element'),
+    body('ingredients.*')
+      .isString()
+      .withMessage('Each ingredient must be a string')
+      .trim()
   ],
   validateInputs,
   RecipeController.getSuggestions
@@ -37,7 +41,11 @@ router.post(
   [
     body('ingredients')
       .isArray({ min: 1 })
-      .withMessage('Ingredients must be an array with at least one element')
+      .withMessage('Ingredients must be an array with at least one element'),
+    body('ingredients.*')
+      .isString()
+      .withMessage('Each ingredient must be a string')
+      .trim()
   ],
   validateInputs,
   RecipeController.getRecipesByIngredients

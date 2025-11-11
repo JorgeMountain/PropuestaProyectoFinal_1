@@ -15,10 +15,19 @@ class RecipeService {
   }
 
   static async getRecipesByIngredients(ingredients) {
-    if (!Array.isArray(ingredients) || ingredients.length === 0) {
+    if (!Array.isArray(ingredients)) {
+      throw new Error('Ingredients must be provided as an array');
+    }
+
+    const normalizedIngredients = ingredients
+      .map((ingredient) => ingredient?.trim())
+      .filter(Boolean);
+
+    if (normalizedIngredients.length === 0) {
       throw new Error('Ingredients must be a non-empty array');
     }
-    const recipes = await RecipeModel.findByIngredients(ingredients);
+
+    const recipes = await RecipeModel.findByIngredients(normalizedIngredients);
     return recipes;
   }
 

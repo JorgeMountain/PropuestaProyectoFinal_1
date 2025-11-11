@@ -20,7 +20,8 @@ class FavoriteController {
       const favorite = await FavoriteService.addFavorite(id, recipeId);
       res.status(201).json(favorite);
     } catch (error) {
-      res.status(400).json({ error: error.message });
+      const statusCode = error.message === 'Recipe already in favorites' ? 409 : 400;
+      res.status(statusCode).json({ error: error.message });
     }
   }
 
@@ -29,7 +30,10 @@ class FavoriteController {
     const { id } = req.user;
     const { recipeId } = req.body;
     try {
-      await FavoriteService.removeFavorite(id, recipeId);
+      const removed = await FavoriteService.removeFavorite(id, recipeId);
+      if (!removed) {
+        return res.status(404).json({ message: 'Favorite not found' });
+      }
       res.status(204).send();
     } catch (error) {
       res.status(400).json({ error: error.message });

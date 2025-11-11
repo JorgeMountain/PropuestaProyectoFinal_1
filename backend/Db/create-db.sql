@@ -44,21 +44,22 @@ CREATE TABLE Favoritos (
     ID_Favorito SERIAL PRIMARY KEY,
     ID_Usuario INT NOT NULL REFERENCES Usuario(ID_Usuario) ON DELETE CASCADE,
     ID_Receta INT NOT NULL REFERENCES Recetas(ID_Receta) ON DELETE CASCADE,
-    Fecha_Guardado TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    Fecha_Guardado TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    UNIQUE (ID_Usuario, ID_Receta)
 );
 
 -- Insertar Usuarios
 INSERT INTO Usuario (Usuario, Contrasena, Correo) VALUES 
-('Juan Perez', '12345', 'juan.perez@example.com'),
-('Maria Lopez', '12345', 'maria.lopez@example.com'),
-('Carlos Rivera', '12345', 'carlos.rivera@example.com'),
-('Ana Gomez', '12345', 'ana.gomez@example.com'),
-('Luis Torres', '12345', 'luis.torres@example.com'),
-('Laura Martinez', '12345', 'laura.martinez@example.com'),
-('Pedro Sanchez', '12345', 'pedro.sanchez@example.com'),
-('Sofia Ramirez', '12345', 'sofia.ramirez@example.com'),
-('Diego Fernandez', '12345', 'diego.fernandez@example.com'),
-('Valeria Suarez', '12345', 'valeria.suarez@example.com');
+('Juan Perez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'juan.perez@example.com'),
+('Maria Lopez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'maria.lopez@example.com'),
+('Carlos Rivera', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'carlos.rivera@example.com'),
+('Ana Gomez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'ana.gomez@example.com'),
+('Luis Torres', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'luis.torres@example.com'),
+('Laura Martinez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'laura.martinez@example.com'),
+('Pedro Sanchez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'pedro.sanchez@example.com'),
+('Sofia Ramirez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'sofia.ramirez@example.com'),
+('Diego Fernandez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'diego.fernandez@example.com'),
+('Valeria Suarez', '$2a$10$D6/HPMrq025bguVqIiPfxut8PSYTQoeSYXO62QB2S4pASLrmKFivC', 'valeria.suarez@example.com');
 
 INSERT INTO Recetas (Nombre, Descripcion, Porciones, Instrucciones, TiempoPreparacion, Dificultad, Calorias, Tipo) VALUES
 ('Spaghetti Bolognese', 
